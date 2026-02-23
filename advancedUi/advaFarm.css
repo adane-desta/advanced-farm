@@ -1859,3 +1859,717 @@ body {
     top: 0;
     right: 0;
 }
+/* ==================== MY QUESTIONS SECTION ==================== */
+.questions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.question-item {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-base);
+}
+
+.question-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.question-header h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.question-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.question-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.question-category {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--primary-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-md);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.question-animal {
+    background-color: var(--body-bg);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-md);
+    font-size: 0.75rem;
+    border: 1px solid var(--border-color);
+}
+
+.question-date {
+    color: var(--text-light);
+}
+
+.question-content {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: var(--body-bg);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--primary-color);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+}
+
+.question-answer {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: rgba(16, 185, 129, 0.05);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--success-color);
+}
+
+.question-answer strong {
+    color: var(--success-color);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.pending-answer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--body-bg);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+}
+
+.pending-answer i {
+    font-size: 1.5rem;
+    color: var(--warning-color);
+}
+
+.question-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* ==================== APPOINTMENT DETAILS MODAL ==================== */
+.appointment-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.detail-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.detail-row strong {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.detail-row span, .detail-row p {
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+.detail-row p {
+    margin: 0;
+    background-color: var(--body-bg);
+    padding: 0.75rem;
+    border-radius: var(--radius-md);
+}
+
+/* ==================== ANIMAL HEALTH MODAL ==================== */
+.animal-health-modal .animal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.animal-health-modal .animal-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.health-records-list {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.health-record {
+    background-color: var(--body-bg);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--primary-color);
+}
+
+.health-record-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.health-record-type {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-md);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.health-record-date {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.health-record p {
+    margin: 0.25rem 0;
+    font-size: 0.875rem;
+    color: var(--text-primary);
+}
+
+.health-record p strong {
+    color: var(--text-secondary);
+}
+
+/* ==================== FARM ACTIONS GRID ==================== */
+.farm-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.farm-actions .action-card {
+    background-color: var(--body-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.farm-actions .action-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.farm-actions .action-card i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.farm-actions .action-card span {
+    font-weight: 500;
+    text-align: center;
+    color: var(--text-primary);
+}
+
+/* ==================== NOTIFICATIONS LIST (already in vet CSS, but ensure) ==================== */
+.notifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.notification-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-base);
+    cursor: pointer;
+}
+
+.notification-item:hover {
+    background-color: var(--body-bg);
+    transform: translateX(4px);
+}
+
+.notification-item.unread {
+    background-color: rgba(16, 185, 129, 0.05);
+    border-left: 4px solid var(--primary-color);
+}
+
+.notification-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.notification-icon.appointment {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--primary-color);
+}
+
+.notification-icon.question {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--secondary-color);
+}
+
+.notification-icon.system {
+    background-color: rgba(139, 92, 246, 0.1);
+    color: var(--accent-color);
+}
+
+.notification-icon.alert {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: var(--danger-color);
+}
+
+.notification-content {
+    flex: 1;
+}
+
+.notification-title {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--text-primary);
+}
+
+.notification-message {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.notification-time {
+    font-size: 0.75rem;
+    color: var(--text-light);
+}
+
+.notification-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* ==================== ACCOUNT SECTIONS (from vet CSS) ==================== */
+.account-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.account-section {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.account-section h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.account-section h3 i {
+    color: var(--primary-color);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    transition: all var(--transition-fast);
+    background-color: white;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* Privacy options */
+.privacy-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.option-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background-color: var(--body-bg);
+}
+
+.option-info h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: var(--text-primary);
+}
+
+.option-info p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.toggle-switch {
+    position: relative;
+    width: 60px;
+    height: 30px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--border-color);
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+    background-color: var(--primary-color);
+}
+
+input:checked + .toggle-slider:before {
+    transform: translateX(30px);
+}
+
+/* Account info display */
+.account-info {
+    padding: 0.75rem;
+    background-color: var(--body-bg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+/* ==================== MARKET PRICES MODAL ==================== */
+.market-prices-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.market-update-time {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--body-bg);
+    border-radius: var(--radius-md);
+}
+
+.market-prices-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.price-card {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+}
+
+.price-card h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.price-amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+
+.price-change {
+    font-size: 0.875rem;
+}
+
+.price-change.positive {
+    color: var(--success-color);
+}
+
+.price-change.negative {
+    color: var(--danger-color);
+}
+
+/* ==================== NEWS & RESOURCES GRID (already in CSS but ensure) ==================== */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.news-card {
+    background-color: var(--body-bg);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    transition: transform var(--transition-base);
+}
+
+.news-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.news-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.news-type {
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-md);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.news-type.event {
+    background-color: rgba(139, 92, 246, 0.1);
+    color: var(--accent-color);
+}
+
+.news-type.news {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--primary-color);
+}
+
+.news-type.alert {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: var(--danger-color);
+}
+
+.news-type.update {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--secondary-color);
+}
+
+.news-date {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.news-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.news-description {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+/* Resources Grid */
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.resource-card {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: var(--body-bg);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    transition: transform var(--transition-base);
+}
+
+.resource-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.resource-icon {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.resource-content {
+    flex: 1;
+}
+
+.resource-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.resource-description {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.resource-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.resource-type {
+    padding: 0.25rem 0.75rem;
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--primary-color);
+    border-radius: var(--radius-md);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* ==================== LIKE/DISLIKE BUTTONS ==================== */
+.like_dislike_buttons {
+    background: none;
+    border: 2px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.like {
+    color: var(--success-color);
+    border-color: var(--success-color);
+}
+
+.like:hover {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.dislike {
+    color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+.dislike:hover {
+    background-color: var(--danger-color);
+    color: white;
+}
