@@ -930,67 +930,110 @@ async function handleAskQuestion(e) {
 }
 
 // Show my questions section
-function showMyQuestionsSection() {
-    contentArea.innerHTML = `
-        <div class="content-header">
-            <h1 class="page-title">My Questions</h1>
-            <div class="header-actions">
-                <button class="btn-primary" id="newQuestionBtn">
-                    <i class="fas fa-plus"></i> Ask Question
-                </button>
-                <div class="date-display">
-                    <i class="fas fa-calendar-day"></i>
-                    <span id="currentDate"></span>
+async function showMyQuestionsSection() {
+    try {
+        contentArea.innerHTML = `
+            <div class="content-header">
+                <h1 class="page-title">My Questions</h1>
+                <div class="header-actions">
+                    <button class="btn-primary" id="newQuestionBtn">
+                        <i class="fas fa-plus"></i> Ask Question
+                    </button>
+                    <div class="date-display">
+                        <i class="fas fa-calendar-day"></i>
+                        <span id="currentDate"></span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="card">
-            <div class="questions-list" id="questionsList">
-                ${farmerQuestions.length > 0 ? 
-                    farmerQuestions.map(question => `
-                        <div class="question-item">
-                            <div class="question-header">
-                                <div>
-                                    <h3>${question.subject}</h3>
-                                    <div class="question-meta">
-                                        <span class="question-category">${question.category}</span>
-                                        <span class="question-animal">${question.animal}</span>
-                                        <span class="question-date">${question.date.toLocaleDateString()}</span>
-                                    </div>
-                                </div>
-                                <span class="status-badge ${question.status}">${question.status}</span>
-                            </div>
-                            <div class="question-content">
-                                ${question.details ? `<div class="question-details">${question.details}</div>` : ''}
-                                ${question.answer ? `
-                                    <div class="question-answer">
-                                        <strong>Veterinarian's Response:</strong>
-                                        <p>${question.answer}</p>
-                                    </div>
-                                ` : ''}
-                            </div>
-                            <div class="question-actions">
-                                <button class="action-btn secondary" onclick="viewQuestionDetails(${question.id})">
-                                    <i class="fas fa-eye"></i> View Details
-                                </button>
+            <div class="card">
+                <div class="questions-list" id="questionsList">
+                    <div class="loading-spinner">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Loading your questions...</p>
+                    </div>
+                </div>
+            </div>
+        `;
+        updateCurrentDate();
+
+        // Simulate API call
+        await new Promise(resolve => setTimeout(resolve, 800));
+
+        // Mock data
+        const farmerQuestions = [
+            { id: 1, subject: "Cow not eating properly", category: "health", animal: "Daisy", date: new Date(Date.now() - 86400000), status: "answered", details: "My cow Daisy hasn't been eating for 2 days. She seems lethargic.", answer: "Try adjusting feed mixture and monitor temperature. If persists, schedule a farm visit." },
+            { id: 2, subject: "Milk production decreased", category: "nutrition", animal: "Bessie", date: new Date(Date.now() - 43200000), status: "pending", details: "Bessie's milk production dropped significantly this week." },
+            { id: 3, subject: "Chicken sneezing", category: "disease", animal: "Clucky", date: new Date(Date.now() - 21600000), status: "answered", details: "Several chickens are sneezing and have runny noses.", answer: "Could be respiratory infection. Isolate affected birds and consult vet." }
+        ];
+
+        const questionsList = document.getElementById('questionsList');
+        if (farmerQuestions.length === 0) {
+            questionsList.innerHTML = `
+                <div class="empty-state">
+                    <i class="fas fa-comments"></i>
+                    <h3>No questions yet</h3>
+                    <p>Ask your first question to a veterinarian</p>
+                </div>
+            `;
+        } else {
+            questionsList.innerHTML = farmerQuestions.map(question => `
+                <div class="question-item">
+                    <div class="question-header">
+                        <div>
+                            <h3>${question.subject}</h3>
+                            <div class="question-meta">
+                                <span class="question-category">${question.category}</span>
+                                <span class="question-animal">${question.animal}</span>
+                                <span class="question-date">${question.date.toLocaleDateString()}</span>
                             </div>
                         </div>
-                    `).join('') :
-                    `<div class="empty-state">
-                        <i class="fas fa-comments"></i>
-                        <h3>No questions yet</h3>
-                        <p>Ask your first question to a veterinarian</p>
-                    </div>`
-                }
+                        <span class="status-badge ${question.status}">${question.status}</span>
+                    </div>
+                    <div class="question-content">
+                        ${question.details}
+                    </div>
+                    ${question.answer ? `
+                        <div class="question-answer">
+                            <strong>Veterinarian's Response:</strong>
+                            <p>${question.answer}</p>
+                        </div>
+                    ` : `
+                        <div class="pending-answer">
+                            <i class="fas fa-clock"></i>
+                            <span>Waiting for veterinarian's response...</span>
+                        </div>
+                    `}
+                    <div class="question-actions">
+                        <button class="action-btn secondary" onclick="viewQuestionDetails(${question.id})">
+                            <i class="fas fa-eye"></i> View Details
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        document.getElementById('newQuestionBtn').addEventListener('click', showAskQuestionModal);
+        setupScrollListeners();
+        setTimeout(checkScrollIndicator, 100);
+
+    } catch (error) {
+        console.error('Error fetching questions:', error);
+        contentArea.innerHTML = `
+            <div class="content-header">
+                <h1 class="page-title">My Questions</h1>
             </div>
-        </div>
-    `;
-    updateCurrentDate();
-    
-    document.getElementById('newQuestionBtn').addEventListener('click', showAskQuestionModal);
-    
-    setupScrollListeners();
-    setTimeout(checkScrollIndicator, 100);
+            <div class="card">
+                <div class="error-state">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>Unable to load your questions</h3>
+                    <p>Please check your connection and try again</p>
+                    <button class="btn-outline" onclick="showMyQuestionsSection()">
+                        <i class="fas fa-redo"></i> Retry
+                    </button>
+                </div>
+            </div>
+        `;
+    }
 }
 
 // View question details
