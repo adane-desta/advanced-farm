@@ -687,6 +687,37 @@ body {
     gap: 0.5rem;
 }
 
+/* Account Section */
+.account-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.account-section {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.account-section h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.account-section h3 i {
+    color: var(--primary-color);
+}
+
+
 /* Form Styles */
 .form-row {
     display: grid;
