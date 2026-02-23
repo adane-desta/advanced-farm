@@ -1078,12 +1078,10 @@ async function showNewsSection() {
         `;
         updateCurrentDate();
 
-        // In a real app, you would fetch from API
-        // const response = await fetch('http://localhost:5700/api/news-events?language_code=en');
-        // const newsEvents = await response.json();
+        // Simulate API call
+        await new Promise(resolve => setTimeout(resolve, 800));
         
-        // Mock data for demonstration
-        await new Promise(resolve => setTimeout(resolve, 500));
+        // Mock data (same as before)
         const newsEvents = [
             { id: 1, title: "New Vaccination Program", description: "Government announces new subsidized vaccination program for livestock.", type: "news", date: new Date() },
             { id: 2, title: "Farmers Workshop", description: "Free workshop on modern farming techniques this Saturday.", type: "event", date: new Date(Date.now() + 86400000) },
@@ -1092,25 +1090,6 @@ async function showNewsSection() {
         ];
 
         const newsGrid = document.getElementById('newsGrid');
-        newsGrid.innerHTML = newsEvents.map(newsEvent => `
-            <div class="news-card">
-                <div class="news-header">
-                    <span class="news-type ${newsEvent.type.toLowerCase()}">${newsEvent.type}</span>
-                    <span class="news-date">${newsEvent.date.toLocaleDateString()}</span>
-                </div>
-                <h3 class="news-title">${newsEvent.title}</h3>
-                <p class="news-description">${newsEvent.description}</p>
-                <div class="news-actions">
-                    <button class="like_dislike_buttons like">
-                        <i class="fas fa-thumbs-up"></i> Like
-                    </button>
-                    <button class="like_dislike_buttons dislike">
-                        <i class="fas fa-thumbs-down"></i> Dislike
-                    </button>
-                </div>
-            </div>
-        `).join('');
-        
         if (newsEvents.length === 0) {
             newsGrid.innerHTML = `
                 <div class="empty-state">
@@ -1119,6 +1098,25 @@ async function showNewsSection() {
                     <p>Check back later for updates</p>
                 </div>
             `;
+        } else {
+            newsGrid.innerHTML = newsEvents.map(newsEvent => `
+                <div class="news-card">
+                    <div class="news-header">
+                        <span class="news-type ${newsEvent.type.toLowerCase()}">${newsEvent.type}</span>
+                        <span class="news-date">${newsEvent.date.toLocaleDateString()}</span>
+                    </div>
+                    <h3 class="news-title">${newsEvent.title}</h3>
+                    <p class="news-description">${newsEvent.description}</p>
+                    <div class="news-actions">
+                        <button class="like_dislike_buttons like">
+                            <i class="fas fa-thumbs-up"></i> Like
+                        </button>
+                        <button class="like_dislike_buttons dislike">
+                            <i class="fas fa-thumbs-down"></i> Dislike
+                        </button>
+                    </div>
+                </div>
+            `).join('');
         }
         
         setupScrollListeners();
